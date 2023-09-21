@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bookstore.bookstoremanagement.entity.Bucket;
 import com.example.bookstore.bookstoremanagement.entity.Customers;
+import com.example.bookstore.bookstoremanagement.repository.BucketRepository;
 import com.example.bookstore.bookstoremanagement.service.BucketService;
 
 import jakarta.servlet.http.HttpSession;
@@ -30,14 +31,19 @@ public class BucketController
 {
 	@Autowired
 	BucketService bucketService;
+	
+	@Autowired
+	BucketRepository bucketRepository;
 
-	@GetMapping(value="/",produces="application/json")
+	@GetMapping(value="/all",produces="application/json")
 	 public ResponseEntity<List<Bucket>>getalldetails(HttpSession session)
 	 {
-		if(session.getAttribute("customerId")!= null) {
-		
-		  List<Bucket> t1=bucketService.getalldetails();
+		if(session.getAttribute("customerId")!= null)
+		{
+		  List<Bucket> t1= bucketRepository.getBucketByCustomerID(Integer.parseInt(session.getAttribute("customerId").toString()));
+
 		  if(t1.size()!=0) {
+
 			  return  ResponseEntity.ok(t1);}
 		 
 		  
@@ -73,12 +79,54 @@ public class BucketController
 	}
 
 
-	 @DeleteMapping("/{customerId}")
-	 public HttpStatus deleteBucket(@PathVariable int Id)
+	 @DeleteMapping("/{bucketId}")
+	 public HttpStatus deleteBucket(@PathVariable int bucketId)
 	 {
-		 if(bucketService.deleteByid(Id))
+		 if(bucketService.deleteByid(bucketId))
 			 return HttpStatus.OK;
 		 return HttpStatus.NOT_FOUND;
+	 }
+	 
+	 @PostMapping("/increasequantity")
+	 public HttpStatus increasequantity(@RequestBody Bucket bucket,HttpSession session)
+	 {
+		 if(session.getAttribute("customerId")!= null)
+		 {
+		  bucketRepository.increasequantity(bucket.getBucketId());
+		  return HttpStatus.OK;
+		 }
+		 return HttpStatus.NOT_FOUND;
+	 }
+	 @PostMapping("decreasequantity")
+	 public HttpStatus decreasequantity(@RequestBody Bucket bucket,HttpSession session)
+	 {
+		 if(session.getAttribute("customerId")!= null)
+		 {
+		  bucketRepository.decreasequantity(bucket.getBucketId());
+		  return HttpStatus.OK;
+		 }
+		 return HttpStatus.NOT_FOUND;
+	 }
+	 
+	 @GetMapping("/makepayment")
+	 public HttpStatus makepayment(HttpSession session)
+	 {
+		 if(session.getAttribute("customerId")!= null)
+		 {
+			 long count = bucketRepository.count();
+			 bucketService.makepayment((int)session.getAttribute("customerId"));
+			 
+			 if(count != bucketRepository.count()) {
+				 return HttpStatus.OK;
+			 }
+			 else {
+				 return HttpStatus.NOT_MODIFIED;
+			 }
+			 
+			 
+		 }
+		 return HttpStatus.NOT_FOUND;
+		
 	 }
 }
 	 

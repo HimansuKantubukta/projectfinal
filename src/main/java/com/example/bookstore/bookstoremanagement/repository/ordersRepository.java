@@ -9,6 +9,6 @@ import com.example.bookstore.bookstoremanagement.entity.Orders;
 
 public interface ordersRepository extends JpaRepository<Orders,Integer>{
 
-//	List<Orders> findByCustId( Customers custId);
+
 
 }

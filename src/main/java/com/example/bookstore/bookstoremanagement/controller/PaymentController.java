@@ -36,7 +36,6 @@ public class PaymentController {
 	}
 	
 
-//	@GetMapping("/{trainId}")
 	@GetMapping(value="/{paymentId}", produces="application/json")
 	public ResponseEntity<Payments> getTrainByTrainId(@PathVariable int paymentId)
 	{

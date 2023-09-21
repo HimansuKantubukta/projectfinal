@@ -18,7 +18,7 @@ public class admins {
 
 	public admins() {}
 	
-	public admins(int adminId, String name, String email, String password) {
+	public admins(int adminId,String email, String password) {
 		super();
 		this.adminId = adminId;
 		this.email = email;

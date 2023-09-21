@@ -35,9 +35,9 @@ public class CustomerController
     @Autowired
 
     CustomersService customerService;
-    
-   @Autowired
-   CustomersRepository customerRepo;
+//    
+//   @Autowired
+//   CustomersRepository customerRepo;
 
     @Autowired
     CustomersRepository cr;
@@ -52,9 +52,11 @@ public class CustomerController
 
           if(t1.size()!=0)
 
+        	  
             return new ResponseEntity<List<Customers>>(t1,HttpStatus.OK);
 
               return new ResponseEntity<List<Customers>>(t1,HttpStatus.NOT_FOUND);
+         	
 
         
 
@@ -62,7 +64,7 @@ public class CustomerController
      
  	
      	@PostMapping(value="/register",consumes="application/json")
-    	 public void insertCustomer1(@RequestBody Customers cs) 
+    	 public void insertCustomer(@RequestBody Customers cs) 
         {
      			cr.insertinto(cs.getCustomerName(),cs.getMobile(),cs.getEmailId(),cs.getPostalCode(),cs.getStateName(),cs.getPassword(),LocalDate.now());
      			
@@ -101,21 +103,7 @@ public class CustomerController
          return HttpStatus.NOT_FOUND;
 
      }
-//     @PostMapping(value="/login",consumes="application/json")
-//
-//     public boolean countOfValidCustomer(@RequestBody Customers customer,HttpSession request) {
-//// 		Integer id = customerService.countOfCustomer(customer.getEmailId(),customer.getPassword());
-// 		Customers c = customerRepo.findByEmailIdAndPassword(customer.getEmailId(), customer.getPassword());
-//    	 int id = c.getCustomer_id();
-// 		System.out.println(id );
-// 		if( id > 0 ) {
-//// 			 HttpSession session = request.getSession(true);
-// 			request.setAttribute("id", id);
-// 	            System.out.println(request.getAttribute("id"));
-// 	            return true;
-// 		}
-// 		return false;
-// 	}
+
 
      
      

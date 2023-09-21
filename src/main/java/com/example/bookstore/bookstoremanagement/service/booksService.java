@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.bookstore.bookstoremanagement.entity.Books;
+import com.example.bookstore.bookstoremanagement.entity.Customers;
 import com.example.bookstore.bookstoremanagement.repository.Booksrepository;
 
 @Service
@@ -44,39 +45,7 @@ Booksrepository  booksRepository;
 
      }
 
-//     
-//
-//      @Transactional
-//
-//      public boolean insertIntoBooks(Books book) {
-//
-//        return booksRepository.save(book)!=null;
-//
-//          
-//
-//      }
-//
-//      
-//
-//    @Transactional
-//
-//    public boolean deletByBookId(int book_id) {
-//
-//         long count=booksRepository.count();
-//
-//         booksRepository.deleteById(book_id);
-//
-//            return count> booksRepository.count();
-//
-//    }
-//    
-       
-//     @Transactional
-//
-// 	public List<Books>findingByTitle(String title)
-// 	{
-// 		 return booksRepository.findByTitle(title);
-// 	}
+
 
 	@Transactional
 
@@ -86,7 +55,15 @@ Booksrepository  booksRepository;
 
 	
 	}
-	
+	@Transactional
+
+    public boolean insertIntoBooks(Books book) {
+
+      return booksRepository.save(book)!=null;
+
+        
+
+    }
 
 
 }

@@ -27,20 +27,7 @@ public class InventoryService
 
     }
 
-    @Transactional(readOnly=true)
-
-    public Inventory getcustomersById(int cust_id)
-    {
-
-   Optional<Inventory> ct= inventoryrepository.findById(cust_id);
-
-   if(ct.isPresent())
-
-       return ct.get();
-
-   return null;
-
-    }
+   
 
     
 
@@ -56,17 +43,7 @@ public class InventoryService
 
      
 
-   @Transactional
-
-   public boolean deletBycustomerId(int cus_id) {
-
-        long count=inventoryrepository.count();
-
-        inventoryrepository.deleteById(cus_id);
-
-           return count> inventoryrepository.count();
-
-   }
+  
 
 }
 
