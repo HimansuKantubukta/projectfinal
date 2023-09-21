@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Search</title>
+  <style>
+    /* Reset some default styles */
+    body, table {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    
+
+    form {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    img {
+      width: 100px;
+      height: 150px;
+    }
+
+    /* Style for the "No results found" message */
+    div[ngIf] {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #ff0000;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+  <slider></slider>
+
+
+  <form #myForm="ngForm" (ngSubmit)="searchBook()">
+    <input type="text" [(ngModel)]="value" name="search" placeholder="Search....">
+    <button type="submit">Submit</button>
+  </form>
+
+  <table *ngIf="response && response.length > 0">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Price</th>
+        <!-- Add more table headers for other properties in your JSON response -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of response">
+        <td>
+          <img [src]="item.link" alt="Book Image">
+        </td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{item.price}}</td>
+        <!-- Add more table cells for other properties in your JSON response -->
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="response && response.length === 0">No results found.</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<header></header>
+<slider></slider>
+
+<!-- cart.component.html -->
+
+<div class="cart-container">
+  <h2>Cart Details</h2>
+
+  <div *ngIf="cart.length > 0; else emptyCart">
+    <table>
+      <thead>
+        <tr>
+          <th>Book Title</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>TotalPrice</th>
+          <th>Tax</th>
+          <th>Delete</th>
+         
+          
+          <!-- Add more columns for other item details as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart">
+          <td>{{item.book_id.title}}</td>
+          
+          
+          <td>{{ item.bookprice }}</td>
+
+         
+          <td>
+            
+            <button class="add-to-cart-button" (click)="decraesequantity(item.bucketId)">-</button>
+            <span *ngIf="item.quantity > 0">{{ item.quantity }}</span>
+            <button class="add-to-cart-button" (click)="incraesequantity(item.bucketId)">+</button>
+            
+
+          </td>
+          
+          <td>{{item.bookprice * item.quantity}}</td>
+
+          <td>5%</td>
+          
+         <td><button class="delete-from-cart-button" (click)="Delete(item.bucketId)">Delete</button></td> 
+
+
+
+         
+          
+         
+          
+          
+          
+                   <!-- Add more columns for other item details as needed -->
+        </tr>
+        <br>
+        <br>
+        <p>Total price  :  {{totalprice+0.05*totalprice}}</p>
+        <button (click)="makepayment()">Make Payment</button>
+      </tbody>
+    </table>
+
+  </div>
+
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+</div>

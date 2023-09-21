@@ -1,0 +1,38 @@
+/* Reset default styles for the input and button */
+input[type="text"], button {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Style the search container */
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style the search input */
+#search-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 250px;
+    padding-left: 10px;
+    outline: none; /* Remove the default input focus outline */
+}
+
+/* Style the search button */
+#search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for the search button */
+#search-button:hover {
+    background-color: #0056b3;
+}

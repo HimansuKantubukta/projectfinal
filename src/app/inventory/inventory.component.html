@@ -1,0 +1,48 @@
+<newnav></newnav>
+<slider></slider>
+
+<div class="container mt-5">
+
+    <h2>Inventory</h2>
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+                <th>Book ID</th>
+
+                <th>Stock Present</th>
+
+                <th>Stock Used</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let item of inventory">
+
+                <td>{{item.book_id}}</td>
+
+                <td>{{item.stock_level_new}}</td>
+
+                <td>{{item.stock_level_used}}</td>
+
+               
+
+               
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+ 
+
+   
+
+</div>

@@ -1,0 +1,36 @@
+<newnav></newnav>
+<slider></slider>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+<div class="row">
+    <div class="column nature">
+      <div class="content">
+        <div class="top-books">
+          <div *ngFor="let b of books; let i = index" class="book">
+            <img src="{{ b.link }}" alt="comicbook" class="book-image">
+            <div class="book-details">
+              <span class="book-title">{{ b.title }}</span>
+              <br>
+              <span class="book-category">{{ b.category }}</span>
+              <br>
+              <span class="book-price">{{ b.price }}</span>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+
+
+  
+  
+  
+  
+  
