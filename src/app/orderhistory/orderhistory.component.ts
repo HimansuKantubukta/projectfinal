@@ -16,4 +16,14 @@ export class OrderhistoryComponent
     this.appService.showOrderItems().subscribe((data)=>{this.orderItems=data;
     console.log(data)});
   }
+
+
+
+  
+  getDateFiveDaysAfter(order_date: string): Date 
+  {
+    const resultDate = new Date(order_date);
+    resultDate.setDate(resultDate.getDate() + 5);
+    return resultDate;
+  }
 }

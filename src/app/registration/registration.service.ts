@@ -31,13 +31,9 @@ export class RegistrationService{
     
       }
     
-      console.log(data);
-      const optional={
-        Headers:new HttpHeaders({'content-Type':'application/json'}),
-        responseType:'text' as 'json'
-      };
+      
 
-      return this.httpclient.post(url,data,optional);
+      return this.httpclient.post(url,data);
       
     }
     

@@ -26,6 +26,7 @@ export class InventoryComponent
     this.add.showinventory().subscribe((data)=>
     {
       this.inventory=data;
+      console.log(this.inventory);
     }
     )
 

@@ -60,7 +60,7 @@ export class CartComponent
         console.log("book not increased,error",error);
       }
     )
-    // window.location.reload();
+  
   }
 
   decraesequantity(bucketid:number)
@@ -76,7 +76,6 @@ export class CartComponent
         console.log("book not decreased,error",error);
       }
     )
-    // window.location.reload();
   }
 
   makepayment(){
@@ -95,7 +94,6 @@ export class CartComponent
       }
     });
      
-    //window.location.reload();
    
       
   }
@@ -116,7 +114,11 @@ export class CartComponent
   }
     )
 }
+
+
+
 }
+
 
 
  

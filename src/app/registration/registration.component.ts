@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { RegistrationService } from './registration.service';
+import { Router } from '@angular/router';
 
 
 
@@ -11,7 +12,7 @@ import { RegistrationService } from './registration.service';
 })
 export class RegistrationComponent
 {
-  constructor(private resgse:RegistrationService){}
+  constructor(private resgse:RegistrationService,private router:Router){}
 
 
 
@@ -20,7 +21,6 @@ export class RegistrationComponent
   
     if (isNaN(numericValue)) {
       console.error("Invalid numeric input for txt5");
-      // Handle the error gracefully, such as showing a user-friendly message.
       return;
     }
 
@@ -29,13 +29,20 @@ export class RegistrationComponent
       {
         console.log("Successfull");
           alert("Registration successfull")
+          
+          window.location.reload();
+
+
+        
+          
       },
       (error)=>
       {
           console.log("Not happening")
           alert("user already exists ")
 
-      }
+      },
+     
       
     )
   

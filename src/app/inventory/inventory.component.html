@@ -12,6 +12,7 @@
             <tr>
 
                 <th>Book ID</th>
+                <th>Book Title</th>
 
                 <th>Stock Present</th>
 
@@ -25,15 +26,14 @@
 
             <tr *ngFor="let item of inventory">
 
-                <td>{{item.book_id}}</td>
+                <td>{{item.book_id.book_id}}</td>
+
+                <td>{{item.book_id.title}}</td>
 
                 <td>{{item.stock_level_new}}</td>
 
                 <td>{{item.stock_level_used}}</td>
 
-               
-
-               
 
             </tr>
 
